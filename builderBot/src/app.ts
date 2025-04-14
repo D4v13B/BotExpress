@@ -17,7 +17,7 @@ const adapterDB = new Database({
    host: process.env.MYSQL_DB_HOST as string,
    user: process.env.MYSQL_DB_USER as string,
    database: process.env.MYSQL_DB_NAME as string,
-   password: "" as string,
+   password: process.env.MYSQL_DB_PASSWORD as string,
    port: 3306,
 })
 
