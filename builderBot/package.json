@@ -8,6 +8,7 @@
     "start": "node ./dist/app.js",
     "lint": "eslint . --no-ignore",
     "dev": "npm run lint && nodemon ./src/app.ts",
+    "db": "npm run lint && nodemon ./src/config/database.ts",
     "build": "npx rollup -c"
   },
   "keywords": [],
@@ -17,6 +18,7 @@
     "@builderbot/provider-baileys": "1.2.5",
     "@google/generative-ai": "^0.24.0",
     "dotenv": "^16.4.7",
+    "mysql2": "^3.14.0",
     "sharp": "^0.34.1"
   },
   "devDependencies": {
