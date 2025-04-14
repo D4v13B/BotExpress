@@ -1,4 +1,4 @@
-import { readFile } from "fs/promises"
+// import { readFile } from "fs/promises"
 import "dotenv/config"
 import { HistoryRow } from "@builderbot/database-mysql/dist/types"
 import { GoogleGenerativeAI } from "@google/generative-ai"
@@ -14,7 +14,7 @@ export async function getResponseGemini(
    // const historyArr = historyRow ? mapHistoryChats(historyRow) : []
 
    const promptData = await getPromptData()
-   const data = await readFile("./prompt.txt", "utf-8")
+   // const data = await readFile("./prompt.txt", "utf-8")
 
    const chat = model.startChat({
       history: [
