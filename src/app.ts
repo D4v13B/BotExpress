@@ -26,7 +26,7 @@ const welcomeFlow = addKeyword<Provider, Database>([EVENTS.WELCOME]).addAction(
       // const history = await adapterDB.getHistoryByNumber(ctx.from)
 
       const res = await getResponseGemini(ctx.body)
-      await flowDynamic([{ body: res.response.text() }])
+      await flowDynamic([{ body: res }])
    }
 )
 

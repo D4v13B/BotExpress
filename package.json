@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node ./dist/app.js",
     "lint": "eslint . --no-ignore",
+    "gemi": "nodemon ./src/gemini/geminiLLM.ts",
     "dev": "npm run lint && nodemon ./src/app.ts",
     "db": "npm run lint && nodemon ./src/config/database.ts",
     "build": "npx rollup -c"
@@ -16,7 +17,7 @@
     "@builderbot/bot": "1.2.5",
     "@builderbot/database-mysql": "1.2.5",
     "@builderbot/provider-baileys": "1.2.5",
-    "@google/generative-ai": "^0.24.0",
+    "@google/genai": "^0.9.0",
     "dotenv": "^16.4.7",
     "mysql2": "^3.14.0",
     "sharp": "^0.34.1"
