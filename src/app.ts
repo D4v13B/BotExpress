@@ -30,16 +30,8 @@ const welcomeFlow = addKeyword<Provider, Database>([EVENTS.WELCOME]).addAction(
    }
 )
 
-const trackingFlow = addKeyword<Provider, Database>(["/tracking"]).addAction(
-   async (ctx, { flowDynamic }) => {
-      const tracking = ctx.body.split(" ")[1]
-
-      await flowDynamic([{ body: `Tu tracking ${tracking} está en MIAMI` }])
-   }
-)
-
 const main = async () => {
-   const adapterFlow = createFlow([trackingFlow, welcomeFlow])
+   const adapterFlow = createFlow([welcomeFlow])
 
    const adapterProvider = createProvider(Provider)
 
