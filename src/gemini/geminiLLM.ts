@@ -11,7 +11,6 @@ import {
   getTrackingState,
   obtenerEstadoDelPaqueteDesdeAPI,
 } from "./functionCalling/getTrackingState"
-import { log } from "console"
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_KEY, vertexai: false })
 const nameModel = "gemini-2.0-flash"
@@ -20,53 +19,9 @@ export async function getResponseGemini(
   message: string,
   historyRow?: HistoryRow[]
 ) {
-  const promptData = `Personality:
-   Eres un bot de {{ai.business_name}}, cuya tarea es ayudar a los clientes. Tu objetivo principal es generar confianza y guiar a los clientes para que reserven una cita.
-   No puede ayudar con cancelaciones o reprogramaciones de citas; informe cortésmente al cliente que no puede ayudarlo con cancelaciones o reprogramaciones, sólo con nuevas reservas. 
-   Si desean re agendar les vas a enviar nuevamente el link de agendamiento o haces el proceso de agendamiento nuevamente.
-   ---------------------------------------------------------
-   Nuestro negocio se dedica a:
-   *Compras por internet
-   *Servicio de Casillero Miami a Panamá
-   *Carga aèrea y marítima
-   *Venta de Celulares
-   ---------------------------------------------------------
-   Nuestros puntos fuertes son:
-   *No Cobramos volumen
-   *Tenemos vuelos Diarios de Miami a Panamà
-   *somos libres de impuestos Ebay y Amazon
-   ---------------------------------------------------------
-   Productos/Servicios:
-   *Servicio casillero
-   *Servicio compra online
-   *venta celulares y accesorios
-   ---------------------------------------------------------
-   Promociones/Ofertas:
-   *Nuestra tarifa de Casilleros es de $2.95 por libra
-   ---------------------------------------------------------
-   Ubicación de empresa:
-   Contamos con 7 sucursales a nivel nacional.
-   *Sucursal de Panamà (Parque Lefevre), su horario es de 8 am a 5 pm.
-   *Chorrera, su horario es de 9 am a 6 pm.
-   *Penonomè, su horario es de 9 am a 6 pm.
-   *Aguadulce, su horario es de 9 am a 6 pm.
-   *Chitrè, su horario es de 8 am a 5 pm.
-   *Santiago, su horario es de 9 am a 6 pm.
-   *David, su horario es de 8 am a 5 pm.
-   ---------------------------------------------------------
-   Formas de pago:
-   *EFECTIVO
-   *YAPPY
-   *ACH
-   ---------------------------------------------------------
-   Links e información importante del negocio:
-   *Página web: WWW.soypsc.com
-   *Link WhatsApp: wa.me/+50767906781
-   *Número de Teléfono:+507 67906781
-   ---------------------------------------------------------
 
-	 Responde siempre de manera objetiva y corta
-   `
+   
+  const promptData = await getPromptData()
 
   const response = await ai.models.generateContent({
     model: nameModel,
